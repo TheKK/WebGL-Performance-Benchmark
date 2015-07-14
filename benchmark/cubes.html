@@ -51,8 +51,8 @@
 		var addFlag = 0;			// -1 = remove, 1 = add, 0 = nothing
 		var waitFrames = 0;			// wait time between adding/removing objects
 		var waitTime = 10;			// amount of frames to wait
-		
-		
+
+
 		
 		// Check that browser supports WebGL, else exit nicely
 		if (Detector.webgl) {
@@ -94,7 +94,7 @@
 			geometry = new THREE.CubeGeometry( 200, 200, 200 );
 			geometry2 = new THREE.CubeGeometry( 200, 400, 200 );
 
-			for(var i = 0; i < meshes.length; i++)
+			for(var i = 0; i < numObjects; i++)
 			{
 			
 				var compute = (Math.floor(Math.random()*4));
@@ -159,12 +159,11 @@
 			stats.update();
 			
 			//rotate all the mesh objects
-			for(var i = 0; i < meshes.length; i++)
+			for(var i = 0; i < removeNum; i++)
 			{
 				meshes[i].rotation.x += 0.01;
 				meshes[i].rotation.y += 0.03;
 			}
-			
 			//rotate camera position
 			var timer = Date.now() * 0.0002;
 			camera.position.x = Math.cos( timer ) * 2000;
@@ -198,7 +197,7 @@
 				{
 					scene.add( meshes[removeNum++] );
 				}
-				
+
 				waitFrames = waitTime;
 				updateTextBox();
 			}
